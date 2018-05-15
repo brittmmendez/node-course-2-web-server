@@ -22,9 +22,9 @@ app.use((req, res, next) => {
 })
 
 //hijacks all requests to only render this:
-app.use((req, res, next) => {
-  res.render('maintenance.hbs')
-})
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs')
+// })
 
 //need to be below maintenance or users will still be taken to this page
 app.use(express.static(__dirname + '/public'));
@@ -58,14 +58,9 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.get('/me', (req, res) => {
-  res.send({
-    name: 'Britt',
-    likes: [
-      'walking',
-      'icecream',
-      'marco'
-    ]
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects Page',
   })
 });
 
