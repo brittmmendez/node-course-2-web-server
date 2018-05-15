@@ -2,6 +2,9 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+//create a port for heroku or default to 3000
+const port = process.env.PORT || 3000;
+
 let app = express();
 
 //set up partials
@@ -66,4 +69,6 @@ app.get('/me', (req, res) => {
   })
 });
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`server is up on port ${port}`);
+});
